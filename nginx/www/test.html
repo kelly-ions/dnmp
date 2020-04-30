@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<h1>JavaScript 程序</h1>
+<p id="demo">这是一个段落</p>
+<button type="button" onclick="go()">发送</button>
+</body>
+<script>
+function go(){
+    $.ajax({
+        //请求方式
+        type : "POST",
+        //请求的媒体类型
+        contentType: "application/json;charset=UTF-8",
+        //请求地址
+        url : "http://nt.test/api/contact_demand",
+        //数据，json字符串
+        data : JSON.stringify({
+                "name": "sonih",
+                "phone":"1899868756",
+                "demand":"开发需求",
+            }),
+        //请求成功
+        success : function(data) {
+            console.log(data);
+        },
+        //请求失败，包含具体的错误信息
+        error : function(e){
+            console.log(e.responseJSON);
+        }
+    });
+}
+</script>
+</html>
